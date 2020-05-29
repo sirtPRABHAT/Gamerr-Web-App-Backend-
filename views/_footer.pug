@@ -1,0 +1,45 @@
+footer.footer
+    .footer__logo-box
+        img.footer__logo(src="/img/logo-white.png" alt="footer logo")
+    .row.footer__row
+        .col.span-1-of-2
+            .footer__navigation
+                ul.footer__list
+                    li.footer__item
+                        a.footer__link(href="#") Company
+                    li.footer__item
+                        a.footer__link(href="#") Contact Us
+                    li.footer__item
+                        a.footer__link(href="#") Carrier
+                    li.footer__item
+                        a.footer__link(href="#") Privacy
+                    li.footer__item
+                        a.footer__link(href="#") Terms
+        <div class="col span-1-of-2">
+            <p class="footer__copyright"> Built by <a href="#" class="footer__link">Prabhat Kumar</a>. And designed by <a href="#" class="footer__link">PRABHAT KUMAR.</a>Copyright &copy; 2020 by TechHunt. All rights reserved. </p>
+                     
+        </div>
+.popup(id="login-form")
+    .popup__content
+        .popup__left
+            img.popup__img(src="/img/pubg-form-2.jpg" alt="")
+            img.popup__img(src="/img/pubg-form-3.jpg" alt="")
+        .popup__right
+            h1.popup__right__heading(style="font-weight: 700;") Login To your Account
+            a.popup__close(href="#login-btn") &times;
+            form.form(action="#" id="form-login")
+                .form__group
+                    input.form__input(type="email" id="email" placeholder="Email address" required autocomplete="OFF")
+                    label.form__label(for="email") Email address
+                .form__group
+                    input.form__input(type="password" id="password" placeholder="Password" required autocomplete="OFF")
+                    label.form__label(for="password") Email address
+                .form__group.form__group-last
+                    button.btn.btn--green-popup Login &rarr;
+                .form__group.form__group-last
+                    a.form__group-last__link(href="#") Forgot Password ?
+               
+
+
+
+

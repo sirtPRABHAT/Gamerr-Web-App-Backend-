@@ -1,0 +1,115 @@
+extends base
+
+block content
+    section.cards
+        .title
+            h1.title__text Upcoming tournaments
+        .row.game_cards
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style=`background-image: url(/${games[0].imageCover});`)
+                .cards__box-heading 
+                 h2= games[0].name
+                .row.cards__box-details
+                    .col.span-1-of-2= `Date - ${games[0].startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})}`
+                    .col.span-1-of-2= `Time - ${games[0].startDates.toLocaleString('en-us', { hour: '2-digit', minute: '2-digit'})}`
+                .row.cards__box-details
+                    .col.span-1-of-2= `Entry Fee/Player - ${games[0].price}  rs. `
+                    .col.span-1-of-2 Winning Price
+                a.cards__box-btn(href=`/gameId/${games[0].slug}`) JOIN
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_2.jpg);")
+                .cards__box-heading 
+                 h2 Free Fire Tournaments
+                .row.cards__box-details
+                    .col.span-1-of-2 Date
+                    .col.span-1-of-2 Day
+                .row.cards__box-details
+                    .col.span-1-of-2 Entry Fee
+                    .col.span-1-of-2 Winning Price
+                a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_3.jpg);")
+                .cards__box-heading 
+                 h2 Free Fire Tournaments
+                .row.cards__box-details
+                    .col.span-1-of-2 Date
+                    .col.span-1-of-2 Day
+                .row.cards__box-details
+                    .col.span-1-of-2 Entry Fee
+                    .col.span-1-of-2 Winning Price
+                a.cards__box-btn(href="#") JOIN
+        .row.game_cards
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_1.jpg);")
+                .cards__box-heading 
+                 h2 Free Fire Tournaments
+                .row.cards__box-details
+                    .col.span-1-of-2 Date
+                    .col.span-1-of-2 Day
+                .row.cards__box-details
+                    .col.span-1-of-2 Entry Fee
+                    .col.span-1-of-2 Winning Price
+                a.cards__box-btn(href="#") JOIN
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_2.jpg);")
+                .cards__box-heading 
+                 h2 Free Fire Tournaments
+                .row.cards__box-details
+                    .col.span-1-of-2 Date
+                    .col.span-1-of-2 Day
+                .row.cards__box-details
+                    .col.span-1-of-2 Entry Fee
+                    .col.span-1-of-2 Winning Price
+                a.cards__box-btn(href="#") JOIN
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_3.jpg);")
+                .cards__box-heading 
+                 h2 Free Fire Tournaments
+                .row.cards__box-details
+                    .col.span-1-of-2 Date
+                    .col.span-1-of-2 Day
+                .row.cards__box-details
+                    .col.span-1-of-2 Entry Fee
+                    .col.span-1-of-2 Winning Price
+                a.cards__box-btn(href="#") JOIN
+    section.how_to-outer
+        .how_to-inner
+            .title
+                h1.title__text Garena Free Fire
+            h3 10 minutes. 49 players. One goal – Survival. In this fierce survival shooting game, 49 fighters descend upon a remote island from their parachutes and the last man standing brings home the coveted ‘Booyah’. Drive vehicles, explore multiple maps, scout for armory and weapons, defend yourself with the ‘Gloo Wall’, stay in the rapidly shrinking ‘safe zone’, and do more.
+            .title
+                h1.title__text Garena Free Fire Tournament types
+    section.section-book
+        .section-book_row
+            .book
+                .book__form
+                    .title
+                        h1.title__text(style="font-weight: 700;") Contact Us to create tournament
+                    form.form(action="#")
+                        .form__group
+                            input.form__input(type="text",id="name",placeholder="Full name",required,autocomplete="OFF")
+                            label.form__label(for="name") Full Name
+                        .form__group
+                            input.form__input(type="email",id="email-contact",placeholder="Email address",required,autocomplete="OFF")
+                            label.form__label(for="email-contact") Email address
+                        .form__group
+                            button.btn.btn--green Next Step &rarr;
+    
+
+
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+

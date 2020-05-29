@@ -1,0 +1,60 @@
+extends base
+
+
+block content
+    section.detail
+        .row
+            .col.span-1-of-2
+                .title
+                    h1.title__text(style="font-weight:500;") Quick Facts
+                p DATE
+                p DATE
+                p DATE
+                p DATE
+                .title
+                    h1.title__text(style="font-weight:500;") Coordinators
+                p Saurabh
+                p Suraj
+            .col.span-1-of-2
+                .title
+                    h1.title__text(style="font-weight:500;") About Tournament
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet labore culpa asperiores aspernatur dolores deserunt iure, laborum mollitia dolorum nostrum. Quidem eveniet aspernatur itaque earum corrupti amet soluta tempora. Atque!
+    
+    section.players
+        .title
+            h1.title__text(style="font-weight:500;") List of players Joined
+        div(style="overflow-x:auto;")
+            table
+                tr
+                    th Game_ID
+                    th User_name
+                    th country
+                    each player in game.players_participated
+                        tr
+                            td suraj449
+                            td Suraj Kumar
+                            td India
+                        tr
+                            td Alpha_Dm
+                            td Saurabh Yadav
+                            td India
+                        tr
+                            td suraj449
+                            td Suraj Kumar
+                            td India
+                        tr
+                            td Alpha_Dm
+                            td Saurabh Yadav
+                            td India
+    section.how_to-outer
+        .how_to-inner
+            .title
+                h1.title__text Garena Free Fire
+            h3 10 minutes. 49 players. One goal – Survival. In this fierce survival shooting game, 49 fighters descend upon a remote island from their parachutes and the last man standing brings home the coveted ‘Booyah’. Drive vehicles, explore multiple maps, scout for armory and weapons, defend yourself with the ‘Gloo Wall’, stay in the rapidly shrinking ‘safe zone’, and do more.
+            .title
+                h1.title__text Garena Free Fire Tournament types
+                a(href="/roomId/5ed153dbc9cb2939d0939ed9") Game Id1
+                a(href="/roomId/5ed16559a7cd671ce0ddc3f8") Game Id2
+
+
+

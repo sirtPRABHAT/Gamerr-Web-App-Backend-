@@ -1,0 +1,32 @@
+div.nav.clearfix
+    .nav__logo-box
+        img.nav__logo(src="/img/logo-white.png", alt="logo")
+    ul.nav__list
+        li.nav__item
+            a.nav__list-link Home
+        li.nav__item
+            a.nav__list-link Play
+        li.nav__item
+            a.nav__list-link About Us
+        if user    
+            li.nav__item
+                a.nav__list-link(href="#" id="logout-btn")
+                    span Logout
+        else
+            li.nav__item
+                a.nav__list-link(href="#login-form" id="login-btn")
+                    span Login
+        //- li.nav__item
+        //-     a.nav__list-link(href="#")
+        //-         span Sign up
+
+.header
+    .header__text-box
+        h1.primary-text Garena free fire tournament
+        h3.secondary-text Find community-run Garena Free Fire esports tournaments happening across 200 communities worldwide. Click ‘Join’ to enter the Garena Free Fire tournament.
+
+
+
+
+
+

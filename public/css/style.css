@@ -1,0 +1,550 @@
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background-color: #161d22;
+  line-height: 1.7;
+  color: #83939f;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.title {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.title__text {
+  color: white;
+  width: 60%;
+  font-weight: 700;
+  font-style: inherit;
+}
+
+.btn {
+  /* : operator defines some state of of element, as here it defines link state and visited state */
+}
+.btn,
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1.2rem 2rem;
+  display: inline-block;
+  transition: all 0.2s;
+  border-radius: 8rem;
+  position: relative;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn:hover::after {
+  /* this is a psuedo element of that time when btn is hover */
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.btn:active,
+.btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.btn--white {
+  background-color: white;
+  color: gray;
+}
+.btn--white::after {
+  background-color: #fff;
+}
+.btn--green {
+  background-color: #006eff;
+  color: white;
+}
+.btn--green::after {
+  background-color: #006eff;
+}
+.btn--green-popup {
+  display: inline-block;
+  padding: 1rem;
+  color: white;
+  background-color: #006eff;
+}
+.btn--green-popup:hover {
+  background-color: green;
+}
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(117, 117, 117, 0.61);
+  backdrop-filter: blur(8px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup__close:link,
+.popup__close:visited {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  color: #83939f;
+  font-size: 1.7rem;
+  position: absolute;
+  top: 0.3rem;
+  right: 1rem;
+}
+.popup__close:link:hover,
+.popup__close:visited:hover {
+  color: red;
+}
+.popup__content {
+  width: 75%;
+  background-color: white;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.226);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.25);
+  transition: all 0.5s 0.2s;
+  border-radius: 3px;
+  display: table;
+  overflow: hidden;
+}
+.popup__left {
+  width: 33.333333%;
+  display: table-cell;
+}
+.popup__right {
+  background-image: linear-gradient(to right, #eee, #eee);
+  width: 66.6666667%;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 2rem 4rem;
+}
+.popup__right__heading {
+  color: #83939f;
+  margin-bottom: 1rem;
+}
+.popup__img {
+  display: block;
+  width: 100%;
+}
+.popup:target {
+  opacity: 1;
+  visibility: visible;
+}
+.popup:target .popup__content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.popup__close:link,
+.popup__close:visited {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  color: #83939f;
+  font-size: 1.7rem;
+  position: absolute;
+  top: 0.3rem;
+  right: 1rem;
+}
+.popup__close:link:hover,
+.popup__close:visited:hover {
+  color: red;
+}
+
+.nav {
+  background-color: #1c252c;
+  width: 100%;
+  top: 0;
+  padding-bottom: 1rem;
+  overflow: hidden;
+  position: fixed;
+  z-index: 100;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.164);
+}
+.nav__logo-box {
+  position: absolute;
+  left: 10%;
+  padding: 1rem;
+}
+.nav__logo {
+  height: 2.5rem;
+}
+.nav__list {
+  float: right;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  margin-right: 8rem;
+  margin-left: 8rem;
+}
+.nav__list-link {
+  list-style: none;
+  text-decoration: none;
+  color: #83939f;
+}
+.nav__list-link span {
+  border: 1px solid #83939f;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 35px;
+  border-radius: 10px;
+}
+.nav__list-link:hover {
+  color: white;
+}
+.nav__item {
+  display: inline-block;
+  margin-right: 2rem;
+  font-size: 1.1rem;
+}
+
+.header {
+  width: 100%;
+  height: 80vh;
+  background-image: linear-gradient(
+      to top,
+      #161d22 2%,
+      #161d22ee 10%,
+      #161d22e3 20%,
+      #161d2200 50%
+    ),
+    url(../img/free_fire.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  overflow: hidden;
+}
+.header__text-box {
+  transform: translateY(80%);
+  position: absolute;
+  top: 60%;
+  left: 10%;
+}
+.header__text-box .primary-text {
+  color: white;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.header__text-box .secondary-text {
+  color: #83939f;
+  width: 60%;
+}
+
+.cards {
+  margin: 3rem 10rem;
+}
+.cards__box {
+  background-color: #222d35;
+  border-radius: 5px;
+  margin-bottom: 2rem !important;
+  overflow: hidden;
+  transition: transform 0.2s;
+  position: relative;
+}
+.cards__box h2 {
+  color: white;
+}
+.cards__box:hover {
+  transform: translateY(-6px);
+}
+.cards__box-img {
+  background-color: #fff;
+  width: 100%;
+  height: 12rem;
+  overflow: hidden;
+  background-size: cover;
+}
+.cards__box-heading {
+  margin: 1rem;
+}
+.cards__box-details {
+  width: 100%;
+  margin-left: 3rem;
+}
+.cards__box-line {
+  height: 0.002rem;
+  border: thin solid #83939f;
+  margin-top: 1rem;
+}
+.cards__box-btn {
+  color: white;
+  display: inline-block;
+  text-align: center;
+  width: 5rem;
+  height: 2rem;
+  text-decoration: none;
+  background-color: #006eff;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  float: right;
+  font-size: 0.8rem;
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+.section-book {
+  padding: 10rem 7rem;
+  background-image: linear-gradient(to right bottom, #222d35, #222d35);
+}
+
+.book {
+  background-image: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.9) 50%,
+      transparent 50%
+    ),
+    url('../img/pubg-form-1.jpg');
+  background-size: 100%;
+  height: 35rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  margin-bottom: 5rem;
+}
+.book__form {
+  padding: 2rem;
+  width: 50%;
+}
+.book__form .title .title__text {
+  color: black;
+}
+
+.form__group:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.form__input {
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1rem 1rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  display: block;
+  width: 90%;
+  transition: all 0.3s;
+}
+.form__input:focus {
+  outline: none;
+  box-shadow: 0rem 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid green;
+}
+.form__input:focus:invalid {
+  border-bottom: 3px solid red;
+}
+.form__input::-webkit-input-placeholder {
+  color: gray;
+}
+
+.form__radio-input {
+  display: none;
+}
+
+.form__label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2rem);
+}
+
+.form__radio-group {
+  display: inline-block;
+  width: 49%;
+}
+
+.form__radio-label {
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.form__radio-button {
+  width: 1rem;
+  height: 1rem;
+  border: 5px solid green;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: -0.4rem;
+  left: 0;
+}
+.form__radio-button::after {
+  content: '';
+  height: 0.5rem;
+  display: block;
+  width: 0.5rem;
+  border-radius: 50%;
+  background-color: green;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1;
+}
+
+.form__group-last {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.form__group-last__link {
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+.form__group-last__link:hover {
+  color: red;
+}
+
+.footer {
+  background-color: #1c252c;
+  padding: 3rem 0;
+  font-size: 1rem;
+  color: #83939f;
+}
+.footer__logo-box {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.footer__logo {
+  width: 5rem;
+  height: auto;
+}
+.footer__navigation {
+  border-top: 1px solid #1c252c;
+  padding-top: 1rem;
+  display: inline-block;
+}
+.footer__list {
+  list-style: none;
+}
+.footer__item {
+  display: inline-block;
+}
+.footer__item:not(:last-child) {
+  margin-right: 1rem;
+}
+.footer__link:link,
+.footer__link:visited {
+  color: #83939f;
+  background-color: #1c252c;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.footer__link:hover,
+.footer__link:active {
+  color: #3498db;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+  transform: rotate(5deg) scale(1.3);
+}
+.footer__copyright {
+  border-top: 1px solid #1c252c;
+  padding-top: 1rem;
+  width: 80%;
+  float: right;
+}
+.footer__row {
+  margin: 2rem 10rem;
+}
+
+.how_to-outer {
+  background-color: #222d35;
+}
+
+.how_to-inner {
+  margin: 3rem 10rem;
+  padding: 4rem 0.5rem;
+}
+
+/* ----------------detail page styling-------------------------------------------------------------------------------------------------- */
+.detail {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 5rem;
+  margin-left: 6rem;
+  padding-left: 2rem;
+}
+
+.players {
+  margin: 1rem 8rem;
+}
+.players table {
+  border-collapse: collapse;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.players table th {
+  padding-left: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #83939f;
+  color: white;
+}
+.players table td {
+  padding-left: 5px;
+  text-align: left;
+  font-size: 1.2rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #83939f;
+}
+.players table tr:nth-child(even) {
+  background-color: #222d35;
+}
+
+/* ----------------detail page styling-------------------------------------------------------------------------------------------------- */
