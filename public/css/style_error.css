@@ -1,0 +1,133 @@
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background-color: #161d22;
+  line-height: 1.7;
+  color: #83939f;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.title {
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.title__text {
+  color: white;
+  width: 60%;
+  font-weight: 700;
+  font-style: inherit;
+}
+
+.error_bg {
+  background-image: url(../img/rdr2.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+
+.error {
+  height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), black);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30000;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s;
+}
+.error__close:link,
+.error__close:visited {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  color: #83939f;
+  font-size: 1.7rem;
+  position: absolute;
+  top: 0.3rem;
+  right: 1rem;
+}
+.error__close:link:hover,
+.error__close:visited:hover {
+  color: red;
+}
+.error__content {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.226);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  display: table;
+  overflow: hidden;
+}
+.error__left {
+  width: 33.333333%;
+  display: table-cell;
+}
+.error__right {
+  background-image: linear-gradient(to right, #222d35, #222d35);
+  width: 66.6666667%;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 2rem 4rem;
+}
+.error__right__heading {
+  color: white;
+  margin-bottom: 1rem;
+}
+.error__right__message {
+  color: white;
+  font-weight: 400;
+}
+.error__img {
+  display: block;
+  width: 100%;
+}
+.error__btn:link,
+.error__btn:visited {
+  color: white;
+  display: inline-block;
+  text-align: center;
+  color: black;
+  font-weight: 700;
+  width: 5rem;
+  height: 2rem;
+  text-decoration: none;
+  background-color: rgba(255, 208, 0, 0.829);
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  border-radius: 150px;
+}
+.error__btn:link:hover,
+.error__btn:visited:hover {
+  background-color: #ffd000;
+}

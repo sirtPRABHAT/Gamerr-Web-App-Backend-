@@ -84,7 +84,9 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(new appError('You are not logged, Please LoggIn', 401));
+    return next(
+      new appError('You are not logged, please loggin, and try again.', 401)
+    );
   }
 
   // token verification

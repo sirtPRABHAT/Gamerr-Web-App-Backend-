@@ -13,7 +13,7 @@ export const login = async (email, password) => {
     });
 
     if (res.data.status === 'Success') {
-      alert('Logged In Successfully');
+      showAlert('success', 'Logged In Successfully');
       // NOTE how to set timeout in js
       window.setTimeout(() => {
         // NOTE location.assign for loading specified page
@@ -37,6 +37,6 @@ export const logout = async () => {
     }
   } catch (err) {
     console.log(err.response);
-    alert('error loggingOut! Try again');
+    showAlert('error', 'error loggingOut! Try again');
   }
 };

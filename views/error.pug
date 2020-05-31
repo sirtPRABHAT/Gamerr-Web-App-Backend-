@@ -1,9 +1,24 @@
-extends base
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet")
+    script(src='https://js.stripe.com/v3/')
+    link(rel="stylesheet" href="/css/style_error.css")
+    link(rel="shortcut icon" type="/image/png" href="img/favicon.png")
+    link(rel="stylesheet" href="/css/Grid.css")
+    title Gamerr | #{title}                        
+  body
+    section.error_bg
+      .error(id="login-form")
+        .error__content
+          .error__left
+            img.error__img(src="/img/error1.jpg")
+          .error__right
+            h1.error__right__heading(style="font-weight: 700;")=heading
+            h3.error__right__message= message
+            a.error__btn(href= redirect) OK
 
-block content
-  main.main
-    .error
-      .error__title
-        h2.heading-secondary.heading-secondary--error Uh oh! Something went wrong!   
-        h2.error__emoji 😢 🤯
-      .error__msg= msg
+    
+
+  script(src="/js/bundle.js")
