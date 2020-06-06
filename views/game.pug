@@ -1,25 +1,48 @@
 extends base
 
 
-block content
+block content 
+    p(id="test")=gameId
     section.detail
         .row
             .col.span-1-of-2
                 .title
-                    h1.title__text(style="font-weight:500;") Quick Facts
-                p DATE
-                p DATE
-                p DATE
-                p DATE
+                    h1.title__text(style="font-weight:500;") Game Overview
+                .detail__features
+                    p.detail__feature=`Sarting Date - ${game.startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})} 2020` 
+                    p.detail__feature=`Starting Time - ${game.startDates.toLocaleString('en-us', { hour: '2-digit', minute: '2-digit', second: '2-digit'})}`
+                    p.detail__feature Mode - Solo
+                    p.detail__feature Country - India
                 .title
                     h1.title__text(style="font-weight:500;") Coordinators
-                p Saurabh
-                p Suraj
+                .detail__features
+                    p.detail__feature Saurabh
+                    p.detail__feature Suraj
             .col.span-1-of-2
                 .title
                     h1.title__text(style="font-weight:500;") About Tournament
                 p Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet labore culpa asperiores aspernatur dolores deserunt iure, laborum mollitia dolorum nostrum. Quidem eveniet aspernatur itaque earum corrupti amet soluta tempora. Atque!
     
+    section.purchase
+        .purchase__img(style="background-image: url(/img/free_fire_port.jpg);")
+        p.purchase__timer.purchase__timer-text Tournament Start in - 
+            span.purchase__timer-time(id="timer")
+        ion-icon.icon.icon-cash-2(name="cash-sharp")
+        p.purchase__fee.purchase__fee-text 
+            span.purchase__fee-fee Entry Fee 10  &#8377;
+        ion-icon.icon.icon-trophy-2(name="trophy-sharp")
+        p.purchase__price.purchase__price-text 
+            span.purchase__price-price Price 100  &#8377;
+        .purchase__btn.purchase__btn-buy
+            a#book-game(href="#" data-id=`${game._id}`) Purchase
+        .purchase__btn.purchase__btn-roomId
+            a(href=`/roomId/${game._id}`) Get Room Id
+        .purchase__btn.purchase__btn-chat
+            a(href="/game/chat") Go to chat room
+        
+
+
+
     section.players
         .title
             h1.title__text(style="font-weight:500;") List of players Joined
@@ -53,9 +76,17 @@ block content
             h3 10 minutes. 49 players. One goal – Survival. In this fierce survival shooting game, 49 fighters descend upon a remote island from their parachutes and the last man standing brings home the coveted ‘Booyah’. Drive vehicles, explore multiple maps, scout for armory and weapons, defend yourself with the ‘Gloo Wall’, stay in the rapidly shrinking ‘safe zone’, and do more.
             .title
                 h1.title__text Garena Free Fire Tournament types
-                a(href="/roomId/5ed153dbc9cb2939d0939ed9") Game Id1
-                a(href="/roomId/5ed16559a7cd671ce0ddc3f8") Game Id2
-                button(id="book-game" data-game-id="5ed153dbc9cb2939d0939ed9") Purchase
+    script(src="/js/timer.js").
+        test = "#{gameId}"
+                        
 
+    //-<script src="/js/timer.js">var test = !{JSON.stringify(game.startDates)}</script>
+    
+   
+    
+
+
+       
+   
 
 

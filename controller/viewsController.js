@@ -5,7 +5,7 @@ const Users = require('../models/userModel');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   const games = await Games.find();
-  console.log(games[0].startDates);
+
   res.status(200).render('overview', {
     title: 'All Games',
     games,
@@ -17,6 +17,7 @@ exports.getGame = catchAsync(async (req, res, next) => {
     path: 'players_participated',
     select: '-__v -role',
   });
+  const gameId = game.startDates;
   if (!game) {
     next(new appError('No Game found with that name', 500));
   }
@@ -24,10 +25,11 @@ exports.getGame = catchAsync(async (req, res, next) => {
   // const participants = game.players_participated.map(async (element) => {
   //   await Users.findById(element);
   // });
-  console.log(game);
+
   res.status(200).render('game', {
     title: 'Free Fire',
     game,
+    gameId,
   });
 });
 
@@ -41,8 +43,7 @@ exports.getroomId = async (req, res, next) => {
   } = await Games.findById(gameId);
   showTime = startDates.getTime() / 1000;
   checkTime = new Date().getTime() / 1000;
-  console.log(req.user._id);
-  console.log(players_participated);
+
   if (players_participated.includes(req.user._id)) {
     if (checkTime > showTime) {
       res.render('error', {
@@ -65,4 +66,8 @@ exports.getroomId = async (req, res, next) => {
       message: 'Please purchase the game first',
     });
   }
+};
+
+exports.getChatBox = (req, res, next) => {
+  res.render('chat');
 };

@@ -10,68 +10,134 @@ block content
                 .cards__box-heading 
                  h2= games[0].name
                 .row.cards__box-details
-                    .col.span-1-of-2= `Date - ${games[0].startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})}`
-                    .col.span-1-of-2= `Time - ${games[0].startDates.toLocaleString('en-us', { hour: '2-digit', minute: '2-digit'})}`
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-calendar(name="calendar")
+                        span= `${games[0].startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})} 2020` 
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-alarm(name="alarm")
+                        span= `${games[0].startDates.toLocaleString('en-us', { hour: '2-digit', minute: '2-digit', second: '2-digit'})}`
                 .row.cards__box-details
-                    .col.span-1-of-2= `Entry Fee/Player - ${games[0].price}  rs. `
-                    .col.span-1-of-2 Winning Price
-                a.cards__box-btn(href=`/gameId/${games[0].slug}`) JOIN
-            .col.span-1-of-3.cards__box
-                .cards__box-img(style="background-image: url(/img/card_img_2.jpg);")
-                .cards__box-heading 
-                 h2 Free Fire Tournaments
-                .row.cards__box-details
-                    .col.span-1-of-2 Date
-                    .col.span-1-of-2 Day
-                .row.cards__box-details
-                    .col.span-1-of-2 Entry Fee
-                    .col.span-1-of-2 Winning Price
-                a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="cash")
+                        span= `Entry Fee- ${games[0].price}  rs. ` 
+                    .col.span-1-of-2.cards__box-detail 
+                        ion-icon.icon.icon-globe-outlin(name="globe-outline")
+                        span Solo
+                .row.cards__box-button
+                    ion-icon.icon.icon-trophy(name="trophy")
+                    p(style="display:inline;") &nbsp; &#8377; 100
+                    a.cards__box-btn(href=`/gameId/${games[0].slug}`) JOIN
             .col.span-1-of-3.cards__box
                 .cards__box-img(style="background-image: url(/img/card_img_3.jpg);")
                 .cards__box-heading 
-                 h2 Free Fire Tournaments
+                 h2= games[0].name
                 .row.cards__box-details
-                    .col.span-1-of-2 Date
-                    .col.span-1-of-2 Day
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-calendar(name="calendar")
+                        span Date
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-alarm(name="alarm")
+                        span Day
                 .row.cards__box-details
-                    .col.span-1-of-2 Entry Fee
-                    .col.span-1-of-2 Winning Price
-                a.cards__box-btn(href="#") JOIN
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="cash")
+                        span Entry fee
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="globe-outline")
+                        span winning price
+                .row.cards__box-button
+                    ion-icon.icon.icon-trophy(name="trophy")
+                    p(style="display:inline;") &nbsp; &#8377; 100
+                    a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_2.jpg);")
+                .cards__box-heading 
+                 h2= games[0].name
+                .row.cards__box-details
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-calendar(name="calendar")
+                        span Date
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-alarm(name="alarm")
+                        span Day
+                .row.cards__box-details
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="cash")
+                        span Entry fee
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="globe-outline")
+                        span winning price
+                .row.cards__box-button
+                    ion-icon.icon.icon-trophy(name="trophy")
+                    p(style="display:inline;") &nbsp; &#8377; 100
+                    a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
         .row.game_cards
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_3.jpg);")
+                .cards__box-heading 
+                 h2= games[0].name
+                .row.cards__box-details
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-calendar(name="calendar")
+                        span Date
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-alarm(name="alarm")
+                        span Day
+                .row.cards__box-details
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="cash")
+                        span Entry fee
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="globe-outline")
+                        span winning price
+                .row.cards__box-button
+                    ion-icon.icon.icon-trophy(name="trophy")
+                    p(style="display:inline;") &nbsp; &#8377; 100
+                    a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
+            .col.span-1-of-3.cards__box
+                .cards__box-img(style="background-image: url(/img/card_img_2.jpg);")
+                .cards__box-heading 
+                 h2= games[0].name
+                .row.cards__box-details
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-calendar(name="calendar")
+                        span Date
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-alarm(name="alarm")
+                        span Day
+                .row.cards__box-details
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="cash")
+                        span Entry fee
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="globe-outline")
+                        span winning price
+                .row.cards__box-button
+                    ion-icon.icon.icon-trophy(name="trophy")
+                    p(style="display:inline;") &nbsp; &#8377; 100
+                    a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
             .col.span-1-of-3.cards__box
                 .cards__box-img(style="background-image: url(/img/card_img_1.jpg);")
                 .cards__box-heading 
-                 h2 Free Fire Tournaments
+                 h2= games[0].name
                 .row.cards__box-details
-                    .col.span-1-of-2 Date
-                    .col.span-1-of-2 Day
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-calendar(name="calendar")
+                        span Date
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-alarm(name="alarm")
+                        span Day
                 .row.cards__box-details
-                    .col.span-1-of-2 Entry Fee
-                    .col.span-1-of-2 Winning Price
-                a.cards__box-btn(href="#") JOIN
-            .col.span-1-of-3.cards__box
-                .cards__box-img(style="background-image: url(/img/card_img_2.jpg);")
-                .cards__box-heading 
-                 h2 Free Fire Tournaments
-                .row.cards__box-details
-                    .col.span-1-of-2 Date
-                    .col.span-1-of-2 Day
-                .row.cards__box-details
-                    .col.span-1-of-2 Entry Fee
-                    .col.span-1-of-2 Winning Price
-                a.cards__box-btn(href="#") JOIN
-            .col.span-1-of-3.cards__box
-                .cards__box-img(style="background-image: url(/img/card_img_3.jpg);")
-                .cards__box-heading 
-                 h2 Free Fire Tournaments
-                .row.cards__box-details
-                    .col.span-1-of-2 Date
-                    .col.span-1-of-2 Day
-                .row.cards__box-details
-                    .col.span-1-of-2 Entry Fee
-                    .col.span-1-of-2 Winning Price
-                a.cards__box-btn(href="#") JOIN
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="cash")
+                        span Entry fee
+                    .col.span-1-of-2.cards__box-detail
+                        ion-icon.icon.icon-cash(name="globe-outline")
+                        span winning price
+                .row.cards__box-button
+                    ion-icon.icon.icon-trophy(name="trophy")
+                    p(style="display:inline;") &nbsp; &#8377; 100
+                    a.cards__box-btn(href=`/gameId/${games[1].slug}`) JOIN
     section.how_to-outer
         .how_to-inner
             .title

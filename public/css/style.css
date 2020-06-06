@@ -13,7 +13,57 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 100%;
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 95%;
+  }
+}
+@media (max-width: 1100px) {
+  html {
+    font-size: 90%;
+  }
+}
+@media (max-width: 1000px) {
+  html {
+    font-size: 85%;
+  }
+}
+@media (max-width: 900px) {
+  html {
+    font-size: 83%;
+  }
+}
+@media (max-width: 800px) {
+  html {
+    font-size: 70%;
+  }
+}
+@media (max-width: 700px) {
+  html {
+    font-size: 75%;
+  }
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 70%;
+  }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 65%;
+  }
+}
+@media (max-width: 400px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (max-width: 300px) {
+  html {
+    font-size: 50%;
+  }
 }
 
 body {
@@ -194,15 +244,24 @@ body {
   overflow: hidden;
   position: fixed;
   z-index: 100;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.164);
+  box-shadow: 0 1rem 10rem rgba(0, 0, 0, 0.4);
 }
 .nav__logo-box {
   position: absolute;
-  left: 10%;
+  margin-left: 10rem;
   padding: 1rem;
+  width: 40%;
 }
 .nav__logo {
   height: 2.5rem;
+}
+.nav__text {
+  font-weight: 700;
+  font-family: cursive;
+  color: white;
+  display: inline;
+  vertical-align: text-bottom;
+  font-size: 1.5rem;
 }
 .nav__list {
   float: right;
@@ -293,13 +352,26 @@ body {
   margin: 1rem;
 }
 .cards__box-details {
+  display: inline-block;
+  padding: 0 1rem;
+  text-align: center;
   width: 100%;
-  margin-left: 3rem;
 }
-.cards__box-line {
-  height: 0.002rem;
-  border: thin solid #83939f;
+.cards__box-detail {
+  vertical-align: middle;
+  font-size: 1rem;
+  text-align: center;
+}
+.cards__box-detail span {
+  padding-bottom: 0.3rem;
+}
+.cards__box-button {
+  display: inline-block;
+  width: 100%;
   margin-top: 1rem;
+  padding: 1rem 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 20px #efefef8a;
 }
 .cards__box-btn {
   color: white;
@@ -309,13 +381,20 @@ body {
   height: 2rem;
   text-decoration: none;
   background-color: #006eff;
-  margin-bottom: 2rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
-  float: right;
   font-size: 0.8rem;
   padding: 0.3rem;
+  float: right;
   border-radius: 5px;
+}
+
+.icon {
+  color: #83939f;
+  margin-right: 0.2rem;
+}
+.icon-trophy {
+  margin-left: 1.5rem;
+  font-size: 1.2rem;
+  color: yellow;
 }
 
 .section-book {
@@ -511,11 +590,128 @@ body {
 
 /* ----------------detail page styling-------------------------------------------------------------------------------------------------- */
 .detail {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-right: 5rem;
-  margin-left: 6rem;
-  padding-left: 2rem;
+  margin: 1rem 6rem;
+  padding: 1rem 2rem;
+}
+.detail__features {
+  padding: 0.2rem 2rem;
+}
+.detail__feature {
+  padding: 0.2rem 0rem;
+  font-size: 1.3rem;
+}
+.detail__left {
+  border-right: 1px solid #83939f;
+}
+.detail__right {
+  padding-left: 3rem;
+}
+
+.purchase {
+  margin: 4rem 6rem;
+  padding: 0.2rem 4rem;
+  height: 20rem;
+  position: relative;
+  cursor: pointer;
+}
+.purchase__img {
+  width: 20%;
+  height: 100%;
+  background-size: cover;
+  display: inline-block;
+}
+.purchase__btn {
+  display: inline-block;
+  position: absolute;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+}
+.purchase__btn a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: white;
+}
+.purchase__btn-buy {
+  bottom: 1%;
+  left: 30%;
+  background-image: linear-gradient(to left, red, #ff7300);
+}
+.purchase__btn-roomId {
+  bottom: 1%;
+  left: 41%;
+  background-image: linear-gradient(to left, #80006b, #cc00ff);
+}
+.purchase__btn-chat {
+  bottom: 1%;
+  left: 54%;
+  background-image: linear-gradient(to left, #0059ff, #044164);
+}
+.purchase__timer {
+  vertical-align: middle;
+  position: absolute;
+  display: inline-block;
+  top: 2%;
+  left: 30%;
+  color: white;
+}
+.purchase__timer-text {
+  font-size: 1.4rem;
+}
+.purchase__timer-time {
+  font-size: 2rem;
+}
+.purchase__fee {
+  vertical-align: middle;
+  position: absolute;
+  display: inline-block;
+  top: 25%;
+  left: 33%;
+  color: white;
+}
+.purchase__fee-text {
+  color: green;
+  font-size: 1.5rem;
+}
+.purchase__fee-fee {
+  color: white;
+  font-size: 1.5rem;
+}
+.purchase__price {
+  vertical-align: top;
+  position: absolute;
+  display: inline-block;
+  top: 40%;
+  left: 33%;
+}
+.purchase__price-text {
+  color: yellow;
+  font-size: 2.5rem;
+}
+.purchase__price-price {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.icon-cash-2 {
+  font-size: 3rem;
+  color: green !important;
+  vertical-align: middle;
+  position: absolute;
+  display: inline-block;
+  top: 25%;
+  left: 28%;
+  color: white;
+}
+
+.icon-trophy-2 {
+  font-size: 3rem;
+  color: yellow !important;
+  vertical-align: middle;
+  position: absolute;
+  display: inline-block;
+  top: 44%;
+  left: 28%;
+  color: white;
 }
 
 .players {
@@ -547,7 +743,6 @@ body {
 .players table tr:nth-child(even) {
   background-color: #222d35;
 }
-
 /* ----------------detail page styling-------------------------------------------------------------------------------------------------- */
 .alert {
   position: fixed;
@@ -571,4 +766,9 @@ body {
 }
 .alert--error {
   background-color: #eb4d4b;
+}
+#test {
+  color: white;
+  display: none;
+  height: 0px;
 }
