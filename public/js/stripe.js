@@ -9,9 +9,7 @@ export const bookGame = async (gameId, event) => {
       event.target.innerHTML = 'Purchase';
       return;
     }
-    const session = await axios(
-      `http://localhost:2000/api/purchase/checkout-session/${gameId}`
-    );
+    const session = await axios(`/api/purchase/checkout-session/${gameId}`);
 
     if (session.data.alreadyPurchased) {
       showAlert('error', 'You have already Purchased the game');
