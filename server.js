@@ -17,7 +17,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-//dotenv.config({ path: './config.env' });
+dotenv.config({ path: './config.env' });
 const app = require('./app');
 
 console.log(process.env.NODE_ENV);
@@ -118,5 +118,12 @@ process.on('unhandledRejection', (err) => {
   console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
+  });
+});
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECIEVED, Shutting down gracefully!!');
+  server.close(() => {
+    console.log('Process Terminated');
   });
 });

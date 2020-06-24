@@ -22,8 +22,10 @@ const createSendToken = (user, status, res) => {
     httpOnly: true, // due to this we can not change cookie in browser
   };
 
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  //if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   //cookieOptions.secure = true, means cookie will only sent to secure connection that is https connection
+  if (req.secure || req.headers['x-forwarded-proto'] === 'https')
+    cookieOptions.secure = true;
 
   res.cookie('jwt', token, cookieOptions);
 

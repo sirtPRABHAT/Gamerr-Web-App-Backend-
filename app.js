@@ -14,6 +14,7 @@ const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const app = express();
 
@@ -30,6 +31,9 @@ const limiter = rateLimit({
 });
 
 //Middlewares
+
+app.use(cors());
+app.options('*', cors());
 
 // 1) This middleware set security http header
 app.use(helmet());
