@@ -143,6 +143,7 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     }
   }
+  console.log('check is logged in');
   next();
 };
 

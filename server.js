@@ -109,7 +109,7 @@ io.on('connection', (socket) => {
 
 //--------------------------------------------------------------------------------------------
 const PORT = process.env.PORT || 1000;
-server.listen(PORT, 'localhost', () => {
+server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
