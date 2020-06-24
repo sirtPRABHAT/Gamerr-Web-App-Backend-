@@ -10,6 +10,4 @@ Router.get(
   purchaseController.getCheckOutSession
 );
 
-//Router.get('/paytm', paytm.getToken);
-
 module.exports = Router;
