@@ -10,11 +10,11 @@ const sendEmail = async (options) => {
     //   user: process.env.EMAIL_USER,
     //   pass: process.env.EMAIL_PASSWORD,
     // },
-    host: 'smtp.mailtrap.io',
-    port: 2525,
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
     auth: {
-      user: 'be5bfa5bd7bb83',
-      pass: '90128333e32b8c',
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
     },
     // service: 'Gmail',
     // auth: {

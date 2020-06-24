@@ -3,6 +3,13 @@ const dotenv = require('dotenv');
 const http = require('http');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
+const { createMessage, createLocationMessage } = require('./utils/messages');
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require('./utils/users');
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
@@ -13,7 +20,7 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-//console.log(process.env); // process.env is available everywhere in application
+console.log(process.env.NODE_ENV);
 const db = process.env.HOSTED_DATABASE_CONNECTION_STRING.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
@@ -40,34 +47,68 @@ const io = socketio(server);
 io.on('connection', (socket) => {
   console.log('New web_socket connection was established');
 
-  socket.emit('message', 'Welcome');
+  socket.on('join', ({ username, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, username, room });
 
-  socket.broadcast.emit('message', 'A new user has joined');
+    if (error) {
+      return callback(error);
+    }
+
+    socket.join(user.room);
+    socket.emit('message', createMessage('Admin', 'Welcome'));
+    socket.broadcast
+      .to(user.room)
+      .emit('message', createMessage('Admin', `${user.username} has joined`));
+
+    io.to(user.room).emit('roomData', {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
+
+    callback();
+  });
+
   socket.on('send-msg', (message, callback) => {
+    const user = getUser(socket.id);
     //this callback fn called here and executed at client side, where it is defined
     const filter = new Filter();
     if (filter.isProfane(message)) {
       return callback('Profanity is not allowed!');
     }
-    io.emit('message', message);
+    io.to(user.room).emit('message', createMessage(user.username, message));
     callback();
   });
 
   socket.on('sendLocation', (coords, callback) => {
-    io.emit(
-      'message',
-      `https://google.com/maps?q=${coords.latitude},${coords.longitude}`
+    const user = getUser(socket.id);
+    io.to(user.room).emit(
+      'locationMessage',
+      createLocationMessage(
+        user.username,
+        `https://google.com/maps?q=${coords.latitude},${coords.longitude}`
+      )
     );
     callback('Location shared');
   });
 
   socket.on('disconnect', () => {
-    io.emit('message', 'A user has left');
+    const user = removeUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit(
+        'message',
+        createMessage('Admin', `${user.username} has left`)
+      );
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      });
+    }
   });
 });
 
 //--------------------------------------------------------------------------------------------
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 1000;
 server.listen(PORT, 'localhost', () => {
   console.log(`Server is listening on port ${PORT}`);
 });
@@ -79,5 +120,3 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
   });
 });
-
-//#273742

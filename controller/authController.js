@@ -23,6 +23,8 @@ const createSendToken = (user, status, res) => {
   };
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  //cookieOptions.secure = true, means cookie will only sent to secure connection that is https connection
+
   res.cookie('jwt', token, cookieOptions);
 
   //this is to remove password field from signup document output
@@ -135,7 +137,7 @@ exports.isLoggedIn = async (req, res, next) => {
       }
 
       res.locals.user = freshUser; // NOTE every template have access to res.locals so we put it here to use it there
-      // console.log(res.locals.user);
+
       return next();
     } catch (err) {
       return next();

@@ -13,9 +13,13 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 const pug = require('pug');
 
 const app = express();
+
+//this is only for heroku deployment
+app.enable('trust proxy');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -44,7 +48,6 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' })); //for getting body from form submission, as their url contains body
 app.use(cookieParser());
 app.use((req, res, next) => {
-  // console.log(req.cookies);
   next();
 });
 
@@ -68,6 +71,8 @@ app.use(
   })
 );
 
+app.use(compression());
+
 // 8) Used to render static files
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -77,16 +82,8 @@ app.use('/', viewRoute);
 app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
 app.use('/api/purchase', purchaseRouter);
+// app.use('/api/purchase', purchaseRouter);
 app.all('*', (req, res, next) => {
-  // res.status(404).json({
-  //   status: 'fail',
-  //   message: `Request ${req.originalUrl} does not found on this server`,
-  // });
-  // err = new Error(`Request ${req.originalUrl} does not found on this server`); //value in bracket is err.message
-  // err.statusCode = 404;
-  // err.status = 'fail';
-
-  // next(err); //next with parameter skips all next middleware and jumps to err middleware
   next(
     new AppError(
       `Request ${req.originalUrl} does not found on this server`,

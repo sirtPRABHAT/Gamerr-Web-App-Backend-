@@ -21,7 +21,7 @@ exports.getGame = catchAsync(async (req, res, next) => {
   if (!game) {
     next(new appError('No Game found with that name', 500));
   }
-  // console.log(game.players_participated[0]);
+
   // const participants = game.players_participated.map(async (element) => {
   //   await Users.findById(element);
   // });

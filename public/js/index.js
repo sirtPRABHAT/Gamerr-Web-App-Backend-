@@ -15,7 +15,7 @@ if (loginForm) {
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    console.log(email, password);
+
     login(email, password);
   });
 }
@@ -34,6 +34,3 @@ if (bookBtn) {
     bookGame(gameId, event);
   });
 }
-
-//- var x = setInterval(function () { var now = new Date().getTime(); var distance = countDownDate - now; var days = Math.floor(distance / (1000 * 60 * 60 * 24)); var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-// document.getElementById('timer').innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's '; if (distance < 0) { clearInterval(x); document.getElementById('timer').innerHTML = 'TOURNAMENT ENDED'; document.getElementById('purchase').setAttribute('href', '#');}},1000)

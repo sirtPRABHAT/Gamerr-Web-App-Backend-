@@ -1,7 +1,6 @@
 var countDown = new Date().getTime();
 var gameStarts = document.querySelector('#test').innerHTML;
 //var countDownDate = new Date(test.gameId).getTime();
-console.log(gameStarts);
 
 // Set the date we're counting down to
 var countDownDate = new Date(gameStarts).getTime();
