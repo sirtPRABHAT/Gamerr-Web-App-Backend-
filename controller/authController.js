@@ -12,7 +12,7 @@ const tokenGenerator = (id) => {
   });
 };
 
-const createSendToken = (user, status, res) => {
+const createSendToken = (user, status, req, res) => {
   const token = tokenGenerator(user._id);
 
   const cookieOptions = {
@@ -58,7 +58,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordChangedAt: req.body.passwordChangedAt,
   });
 
-  createSendToken(newUser, 201, res);
+  createSendToken(newUser, 201, req, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -73,7 +73,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new appError('Email or password is not correct', 400));
   }
 
-  createSendToken(user, 201, res);
+  createSendToken(user, 201, req, res);
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
@@ -229,7 +229,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   //   status: 'Success',
   //   token,
   // });
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -243,5 +243,5 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
 
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
