@@ -12,7 +12,7 @@ Router.patch('/resetPassword/:token', authController.resetPassword);
 
 //Now after this middleware all Router has protect  functionality
 Router.use(authController.protect);
-
+Router.patch('/updateCoin', authController.protect, userController.updateCoin);
 Router.patch('/updateMyPassword', userController.updateMe);
 Router.patch('/updateMe', userController.updateMe);
 Router.delete('/deleteMe', userController.deleteMe);

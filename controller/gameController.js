@@ -17,3 +17,26 @@ exports.createGame = factory.createOne(Games);
 exports.getGame = factory.getOne(Games);
 exports.updateTour = factory.updateOne(Games);
 exports.deleteTour = factory.deleteOne(Games);
+
+// exports.roomIdCheckTime = (req, res, next) => {
+//   const checkTime = new Date().toLocaleString('en-US', {
+//     timeZone: 'Asia/Kolkata',
+//   });
+//   console.log(checkTime);
+//   res.status(200).json({
+//     status: 'success',
+//     checkTime: new Date(checkTime),
+//   });
+// };
+
+exports.roomIdCheckTime = (req, res, next) => {
+  const checkTime = new Date().toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+  });
+
+  const finalTime = new Date(checkTime).getTime();
+  res.status(200).json({
+    status: 'success',
+    checkTime: new Date(finalTime + 600000),
+  });
+};

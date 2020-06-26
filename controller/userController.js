@@ -38,10 +38,26 @@ exports.getMe = (req, res, next) => {
 };
 
 exports.deleteMe = catchAsync(async (req, res, next) => {
+  console.log(req.body);
   await User.findByIdAndUpdate(req.user._id, { active: false });
   res.status(204).json({
     status: 'success',
     data: null,
+  });
+});
+
+exports.updateCoin = catchAsync(async (req, res, next) => {
+  const user = await User.findByIdAndUpdate(req.user._id, {
+    coins: req.body.amount,
+  });
+  if (!user) {
+    return res.status(202).json({
+      status: 'failed',
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    coin: req.body.amount,
   });
 });
 

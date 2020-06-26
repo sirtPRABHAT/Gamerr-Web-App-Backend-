@@ -12,6 +12,7 @@ Router.route('/')
     authController.restrictTo('admin'),
     gameController.createGame
   );
+Router.route('/time').get(gameController.roomIdCheckTime); //be carefull /:id and /time respond for same endpont
 Router.route('/:id').get(gameController.getGame);
 
 //module export

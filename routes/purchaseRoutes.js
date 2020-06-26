@@ -9,5 +9,9 @@ Router.get(
   authController.protect,
   purchaseController.getCheckOutSession
 );
-
+Router.post(
+  '/joinGame',
+  authController.protect,
+  purchaseController.purchasingGame
+);
 module.exports = Router;

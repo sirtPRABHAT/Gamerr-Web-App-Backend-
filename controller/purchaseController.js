@@ -44,6 +44,12 @@ exports.createPurchaseCheckOut = catchAsync(async (req, res, next) => {
   if (!gameId && !user && !price) return next();
   const game = await Games.findById(gameId);
   //const objId = mongoose.Types.ObjectId(user);
+  if (game.players_participated.includes(req.user._id)) {
+    return res.status(200).send({
+      alreadyPurchased: true,
+      status: 'sucess',
+    });
+  }
   const paricipated = game.players_participated;
 
   paricipated.push(user);
@@ -55,4 +61,33 @@ exports.createPurchaseCheckOut = catchAsync(async (req, res, next) => {
 
   await Purchase.create({ gameId, user, price });
   res.redirect(req.originalUrl.split('?')[0]);
+});
+
+//Android specific route
+exports.purchasingGame = catchAsync(async (req, res, next) => {
+  const { gameId, price } = req.body;
+  const user = req.user._id;
+  const game = await Games.findById(gameId);
+  //const objId = mongoose.Types.ObjectId(user);
+  const paricipated = game.players_participated;
+
+  paricipated.push(user);
+
+  await Games.findOneAndUpdate(
+    { _id: gameId },
+    { players_participated: paricipated }
+  );
+
+  purchaseObj = await Purchase.create({ gameId, user, price });
+  if (purchaseObj) {
+    res.status(200).json({
+      status: 'success',
+      alreadyPurchased: true,
+      purchaseObj,
+    });
+  } else {
+    res.status(500).json({
+      status: 'failed',
+    });
+  }
 });
