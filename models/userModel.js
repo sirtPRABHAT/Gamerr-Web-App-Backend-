@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  cash: {
+    type: Number,
+    default: 0,
+  },
   photo: String,
   role: {
     type: String,

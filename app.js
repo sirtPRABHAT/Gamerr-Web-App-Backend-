@@ -4,6 +4,7 @@ const gameRouter = require('./routes/gameRoutes');
 const userRouter = require('./routes/userRoutes');
 const viewRoute = require('./routes/viewRoute');
 const purchaseRouter = require('./routes/purchaseRoutes');
+const transactionRouter = require('./routes/transactionRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controller/errorController');
 const rateLimit = require('express-rate-limit');
@@ -84,6 +85,7 @@ app.use('/', viewRoute);
 // 9) this middleware for only /user, /tours path
 app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
+app.use('/api/transaction', transactionRouter);
 app.use('/api/purchase', purchaseRouter);
 // app.use('/api/purchase', purchaseRouter);
 app.all('*', (req, res, next) => {

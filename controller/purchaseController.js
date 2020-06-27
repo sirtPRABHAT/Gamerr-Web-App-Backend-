@@ -71,6 +71,12 @@ exports.purchasingGame = catchAsync(async (req, res, next) => {
   //const objId = mongoose.Types.ObjectId(user);
   const paricipated = game.players_participated;
 
+  if (paricipated.includes(req.user._id)) {
+    return res.status(200).send({
+      alreadyPurchased: true,
+      status: 'success',
+    });
+  }
   paricipated.push(user);
 
   await Games.findOneAndUpdate(
@@ -82,7 +88,7 @@ exports.purchasingGame = catchAsync(async (req, res, next) => {
   if (purchaseObj) {
     res.status(200).json({
       status: 'success',
-      alreadyPurchased: true,
+      alreadyPurchased: false,
       purchaseObj,
     });
   } else {
