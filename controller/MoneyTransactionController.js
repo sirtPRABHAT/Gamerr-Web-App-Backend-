@@ -1,6 +1,7 @@
 const MoneyTransaction = require('../models/MoneyTransactionModel');
 const PendingRequest = require('../models/pendingMoneyRequestModel');
 const appError = require('../utils/appError');
+const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const { find } = require('../models/MoneyTransactionModel');
 
@@ -15,10 +16,19 @@ exports.createMoneyTransaction = catchAsync(async (req, res, next) => {
       transactionType: 'debit',
       pending: false,
     });
-    return res.status(200).json({
-      status: 'success',
-      data: moneyTransactionObject,
-    });
+    if (moneyTransactionObject) {
+      transaction_user = await User.findById(userId);
+      final_cash = transaction_user.cash - amount;
+      await User.findByIdAndUpdate(userId, { cash: final_cash });
+      return res.status(200).json({
+        status: 'success',
+        data: moneyTransactionObject,
+      });
+    } else {
+      return res.status(500).json({
+        status: 'failed',
+      });
+    }
   } else if (transactionType === 'credit') {
     const moneyTransactionObject = await MoneyTransaction.create({
       userId,

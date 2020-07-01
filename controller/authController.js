@@ -72,7 +72,7 @@ exports.signupOtp = catchAsync(async (req, res, next) => {
 
 exports.resendOtp = catchAsync(async (req, res, next) => {
   user_email = req.body.email;
-  user = await findOne({ email: user_email });
+  user = await User.findOne({ email: user_email });
   user_otp = user.otp;
 
   // console.log(user);
