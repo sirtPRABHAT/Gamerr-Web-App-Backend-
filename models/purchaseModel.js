@@ -11,6 +11,10 @@ const purchaseSchema = new mongoose.Schema({
     ref: 'User',
     required: [true, 'Purchase must belong to a user'],
   },
+  playerId: {
+    type: String,
+    required: [true, 'Must have playerId'],
+  },
   price: {
     type: Number,
     required: [true, 'Purchase must have a price'],
@@ -34,6 +38,8 @@ purchaseSchema.pre(/^find/, function (next) {
     path: 'gameId',
     select: 'name',
   });
+
+  next();
 });
 
 const Purchase = mongoose.model('Purchase', purchaseSchema);

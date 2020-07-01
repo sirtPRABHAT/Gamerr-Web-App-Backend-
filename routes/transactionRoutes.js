@@ -9,4 +9,10 @@ Router.post(
   authController.protect,
   moneyTransactionController.createMoneyTransaction
 );
+
+Router.get(
+  '/myTransaction',
+  authController.protect,
+  moneyTransactionController.getMyTransactions
+);
 module.exports = Router;

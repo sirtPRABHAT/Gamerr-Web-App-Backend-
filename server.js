@@ -37,12 +37,9 @@ mongoose
     console.log('Database is connected');
   });
 
-// const test = ['ram', 'shyam'];pppp
-// check = test.join(' and ');
-// console.log(check);
 const server = http.createServer(app);
 const io = socketio(server);
-//-------------------------------------------------------------------------------------------------
+//--------------------------------socket.io-----------------------------------------------------------------
 
 io.on('connection', (socket) => {
   console.log('New web_socket connection was established');
@@ -107,7 +104,7 @@ io.on('connection', (socket) => {
   });
 });
 
-//--------------------------------------------------------------------------------------------
+//---------------------------------socket.io-----------------------------------------------------------
 const PORT = process.env.PORT || 1000;
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

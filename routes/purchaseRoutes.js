@@ -9,9 +9,11 @@ Router.get(
   authController.protect,
   purchaseController.getCheckOutSession
 );
+
+//android specific route
 Router.post(
   '/joinGame',
   authController.protect,
-  purchaseController.purchasingGame
+  purchaseController.joiningGame
 );
 module.exports = Router;

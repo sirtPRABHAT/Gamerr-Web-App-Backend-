@@ -5,7 +5,6 @@ const Users = require('../models/userModel');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   const games = await Games.find();
-  //console.log(game);
   res.status(200).render('overview', {
     title: 'All Games',
     games,

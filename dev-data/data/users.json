@@ -7,50 +7,5 @@
     "active": true,
     "photo": "user-1.jpg",
     "password": "$2a$12$Q0grHjH9PXc6SxivC8m12.2mZJ9BbKcgFpwSG4Y1ZEII8HJVzWeyS"
-  },
-  {
-    "_id": "5c8a1dfa2f8fb814b56fa181",
-    "name": "Suraj Kumar",
-    "email": "suraj@example.com",
-    "role": "user",
-    "active": true,
-    "photo": "user-2.jpg",
-    "password": "$2a$12$hP1h2pnNp7wgyZNRwPsOTeZuNzWBv7vHmsR3DT/OaPSUBQT.y0S.."
-  },
-  {
-    "_id": "5c8a1e1a2f8fb814b56fa182",
-    "name": "Saurabh Yadav",
-    "email": "saurabh@example.com",
-    "role": "user",
-    "active": true,
-    "photo": "user-3.jpg",
-    "password": "$2a$12$9nFqToiTmjgfFVJiQvjmreLt4k8X4gGYCETGapSZOb2hHa55t0dDq"
-  },
-  {
-    "_id": "5c8a1ec62f8fb814b56fa183",
-    "name": "Himanshu Prajapat",
-    "email": "himanshu@example.com",
-    "role": "user",
-    "active": true,
-    "photo": "user-4.jpg",
-    "password": "$2a$12$tm33.M/4pfEbZF64WbFuHuVFv85v4qEhi.ik8njbud7yaoqCZpjiy"
-  },
-  {
-    "_id": "5c8a24822f8fb814b56fa192",
-    "name": "Jack sparrow",
-    "email": "john@example.com",
-    "role": "user",
-    "active": true,
-    "photo": "user-19.jpg",
-    "password": "$2a$12$11JElTatQlAFo1Obw/dwd..vuVmQyYS7MT14pkl3lRvVPjGA00G8O"
-  },
-  {
-    "_id": "5c8a24a02f8fb814b56fa193",
-    "name": "Davy Jons",
-    "email": "lisa@example.com",
-    "role": "user",
-    "active": true,
-    "photo": "user-20.jpg",
-    "password": "$2a$12$uA9FsDw63v6dkJKGlLQ/8ufYBs8euB7kqIQewyYlZXU5azEKeLEky"
   }
 ]

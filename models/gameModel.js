@@ -11,33 +11,54 @@ const gameSchema = new mongoose.Schema(
       trim: true,
     },
     slug: String,
-    duration: {
-      type: String,
-      required: [true, 'A tour must have a duration'],
-    },
     maxGroupSize: {
       type: String,
       required: [true, 'A tour must have a group size'],
     },
-
-    price: {
+    entryFee: {
       type: Number,
       required: [true, 'A tour must have a price'],
     },
-
     description: {
       type: String,
       trim: true,
       required: true,
     },
-    imageCover: {
-      type: String,
-      required: [true, 'A tour must have a cover image'],
+    active: {
+      type: Boolean,
+      required: true,
+      default: true,
     },
-    images: [String],
+    winnerList: [
+      {
+        position: {
+          type: Number,
+          default: -1,
+        },
+        playerId: {
+          type: String,
+          default: '',
+        },
+        prize: {
+          type: Number,
+          default: -1,
+        },
+      },
+    ],
     startDates: Date,
     roomId: String,
     players_participated: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+    playerId_userId_relation: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          ref: 'User',
+        },
+        playerId: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },

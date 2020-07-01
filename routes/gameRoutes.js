@@ -13,6 +13,7 @@ Router.route('/')
     gameController.createGame
   );
 Router.route('/time').get(gameController.roomIdCheckTime); //be carefull /:id and /time respond for same endpont
+Router.route('/myGames').get(authController.protect, gameController.getMyGames);
 Router.route('/:id').get(gameController.getGame);
 
 //module export

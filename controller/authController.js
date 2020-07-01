@@ -3,8 +3,9 @@ const catchAsync = require('../utils/catchAsync');
 const jwt = require('jsonwebtoken');
 const appError = require('../utils/appError');
 const { promisify } = require('util');
-const sendEmail = require('../utils/email');
+const Email = require('../utils/email');
 const crypto = require('crypto');
+const { findOne } = require('../models/gameModel');
 
 const tokenGenerator = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -49,16 +50,51 @@ exports.logout = (req, res, next) => {
   res.status(200).json({ status: 'success' });
 };
 
-exports.signup = catchAsync(async (req, res, next) => {
+exports.signupOtp = catchAsync(async (req, res, next) => {
+  const otp = (random =
+    Math.floor(Math.random() * (99999 - 11111 + 1)) + 11111);
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
+    active: false,
+    otp,
     passwordChangedAt: req.body.passwordChangedAt,
   });
 
-  createSendToken(newUser, 201, req, res);
+  // console.log(newUser);
+  await new Email(newUser, otp).sendWelcome();
+  res.status(200).json({
+    status: 'success',
+  });
+});
+
+exports.resendOtp = catchAsync(async (req, res, next) => {
+  user_email = req.body.email;
+  user = await findOne({ email: user_email });
+  user_otp = user.otp;
+
+  // console.log(user);
+  await new Email(user, user_otp).sendWelcome();
+  res.status(200).json({
+    status: 'success',
+  });
+});
+
+exports.signup = catchAsync(async (req, res, next) => {
+  const user = await User.findOneAndUpdate(
+    { email: req.body.email, otp: req.body.otp },
+    { active: true, otp: -1 },
+    { new: true }
+  );
+  if (!user) {
+    return res.json({
+      status: 'failed',
+      message: 'Otp is incorrect',
+    });
+  }
+  createSendToken(user, 201, req, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -67,7 +103,8 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new appError('Please provide email and password', 400));
   }
 
-  const user = await User.findOne({ email }).select('+password');
+  const user = await User.findOne({ email, active: true }).select('+password');
+  // console.log(user);
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new appError('Email or password is not correct', 400));
@@ -145,7 +182,7 @@ exports.isLoggedIn = async (req, res, next) => {
       return next();
     }
   }
-  console.log('check is logged in');
+
   next();
 };
 
@@ -179,14 +216,8 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     'host'
   )}/users/resetPassword/${resetToken}`;
 
-  const message = `click this link ${resetUrl}`;
-
   try {
-    await sendEmail({
-      email: user.email,
-      subject: 'Your reset token is valid for only 10 minutes',
-      message,
-    });
+    await new Email(user, resetUrl).sendPasswordReset();
   } catch (err) {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;

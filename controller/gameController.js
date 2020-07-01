@@ -40,3 +40,17 @@ exports.roomIdCheckTime = (req, res, next) => {
     checkTime: new Date(finalTime + 600000),
   });
 };
+
+exports.getMyGames = catchAsync(async (req, res, next) => {
+  userId = req.user._id;
+  const my_games = await Games.find({ players_participated: [userId] });
+  if (!my_games) {
+    return res.status(500).json({
+      status: 'failed',
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    data: my_games,
+  });
+});

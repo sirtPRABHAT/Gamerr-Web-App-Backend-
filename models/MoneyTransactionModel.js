@@ -28,12 +28,13 @@ const moneyTransactionSchema = new mongoose.Schema({
   },
 });
 
-moneyTransactionSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'user',
-    select: 'name',
-  });
-});
+// moneyTransactionSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: 'userId',
+//     select: 'name',
+//   });
+//   next();
+// });
 
 const MoneyTransaction = mongoose.model(
   'MoneyTransaction',

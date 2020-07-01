@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  photo: String,
+  otp: Number,
   role: {
     type: String,
     enum: ['user', 'admin'],
@@ -77,10 +77,10 @@ userSchema.pre('save', function (next) {
 
 //these are query middleware
 //in query middleware this points to query result
-userSchema.pre(/^find/, function (next) {
-  this.find({ active: { $ne: false } }); //this line add find({active:true}) query to query pointed by this (all query starts with find)
-  next();
-});
+// userSchema.pre(/^find/, function (next) {
+//   this.find({ active: { $ne: false } }); //this line add find({active:true}) query to query pointed by this (all query starts with find)
+//   next();
+// });
 //these function attached to every document which are instance of this schema
 // 1)
 userSchema.methods.correctPassword = async function (

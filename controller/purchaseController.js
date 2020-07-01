@@ -64,12 +64,14 @@ exports.createPurchaseCheckOut = catchAsync(async (req, res, next) => {
 });
 
 //Android specific route
-exports.purchasingGame = catchAsync(async (req, res, next) => {
-  const { gameId, price } = req.body;
+exports.joiningGame = catchAsync(async (req, res, next) => {
+  const { gameId, price, playerId } = req.body;
   const user = req.user._id;
   const game = await Games.findById(gameId);
   //const objId = mongoose.Types.ObjectId(user);
   const paricipated = game.players_participated;
+  const playerId_userId_relation = game.playerId_userId_relation;
+  console.log(playerId_userId_relation);
 
   if (paricipated.includes(req.user._id)) {
     return res.status(200).send({
@@ -78,13 +80,17 @@ exports.purchasingGame = catchAsync(async (req, res, next) => {
     });
   }
   paricipated.push(user);
+  playerId_userId_relation.push({ userId: user, playerId });
 
   await Games.findOneAndUpdate(
     { _id: gameId },
-    { players_participated: paricipated }
+    {
+      players_participated: paricipated,
+      playerId_userId_relation: playerId_userId_relation,
+    }
   );
 
-  purchaseObj = await Purchase.create({ gameId, user, price });
+  purchaseObj = await Purchase.create({ gameId, user, price, playerId });
   if (purchaseObj) {
     res.status(200).json({
       status: 'success',
