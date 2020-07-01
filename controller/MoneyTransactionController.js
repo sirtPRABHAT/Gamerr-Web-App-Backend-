@@ -17,9 +17,6 @@ exports.createMoneyTransaction = catchAsync(async (req, res, next) => {
       pending: false,
     });
     if (moneyTransactionObject) {
-      transaction_user = await User.findById(userId);
-      final_cash = transaction_user.cash - amount;
-      await User.findByIdAndUpdate(userId, { cash: final_cash });
       return res.status(200).json({
         status: 'success',
         data: moneyTransactionObject,
@@ -42,11 +39,21 @@ exports.createMoneyTransaction = catchAsync(async (req, res, next) => {
       paytmMobile,
       amount,
     });
-    return res.status(200).json({
-      status: 'success',
-      newTransaction: moneyTransactionObject,
-      newPendingRequest: pendingRequestObject,
-    });
+
+    if (moneyTransactionObject && pendingRequestObject) {
+      const transaction_user = await User.findById(userId);
+      final_cash = transaction_user.cash - amount;
+      await User.findByIdAndUpdate(userId, { cash: final_cash });
+      return res.status(200).json({
+        status: 'success',
+        newTransaction: moneyTransactionObject,
+        newPendingRequest: pendingRequestObject,
+      });
+    } else {
+      return res.status(500).json({
+        status: 'failed',
+      });
+    }
   }
 });
 
