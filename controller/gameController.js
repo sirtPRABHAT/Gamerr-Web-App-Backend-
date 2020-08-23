@@ -54,3 +54,21 @@ exports.getMyGames = catchAsync(async (req, res, next) => {
     data: my_games,
   });
 });
+
+//Android specific
+exports.getAllGameForAndroid = catchAsync(async (req, res, next) => {
+  const doc = await Games.find({ active: true });
+  if (!doc) {
+    return res.status(200).json({
+      status: 'failed',
+      message: 'No Upcoming Tournaments',
+    });
+  }
+  res.status(200).json({
+    status: 'success',
+    length: doc.length,
+    data: {
+      doc,
+    },
+  });
+});

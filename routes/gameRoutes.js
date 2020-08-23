@@ -12,6 +12,7 @@ Router.route('/')
     authController.restrictTo('admin'),
     gameController.createGame
   );
+Router.route('/upcomingTournaments').get(gameController.getAllGameForAndroid);
 Router.route('/time').get(gameController.roomIdCheckTime); //be carefull /:id and /time respond for same endpont
 Router.route('/myGames').get(authController.protect, gameController.getMyGames);
 Router.route('/:id').get(gameController.getGame);

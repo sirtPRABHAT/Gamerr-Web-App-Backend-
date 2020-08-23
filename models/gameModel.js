@@ -19,6 +19,9 @@ const gameSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'A tour must have a price'],
     },
+    image: {
+      type: String,
+    },
     description: {
       type: String,
       trim: true,

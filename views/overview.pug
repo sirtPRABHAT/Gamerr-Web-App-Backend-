@@ -6,7 +6,7 @@ block content
             h1.title__text Upcoming tournaments
         .row.game_cards
             .col.span-1-of-3.cards__box
-                .cards__box-img(style=`background-image: url(/${games[0].imageCover});`)
+                .cards__box-img(style=`background-image: url(/${games[0].image});`)
                 .cards__box-heading 
                  h2= games[0].name
                 .row.cards__box-details
@@ -19,7 +19,7 @@ block content
                 .row.cards__box-details
                     .col.span-1-of-2.cards__box-detail
                         ion-icon.icon.icon-cash(name="cash")
-                        span= `Entry Fee- ${games[0].price}  rs. ` 
+                        span= `Entry Fee- ${games[0].entryFee}  rs. ` 
                     .col.span-1-of-2.cards__box-detail 
                         ion-icon.icon.icon-globe-outlin(name="globe-outline")
                         span Solo

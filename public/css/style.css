@@ -192,6 +192,20 @@ body {
   display: table;
   overflow: hidden;
 }
+.popup__content-mini {
+  width: 33%;
+  background-color: white;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.226);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.25);
+  transition: all 0.5s 0.2s;
+  border-radius: 3px;
+  display: table;
+  overflow: hidden;
+}
 .popup__left {
   width: 33.333333%;
   display: table-cell;
@@ -204,8 +218,7 @@ body {
   padding: 2rem 4rem;
 }
 .popup__right__heading {
-  color: #7a8792;
-  /* #83939f */
+  color: #83939f;
   margin-bottom: 1rem;
 }
 .popup__img {
@@ -217,6 +230,10 @@ body {
   visibility: visible;
 }
 .popup:target .popup__content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.popup:target .popup__content-mini {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
