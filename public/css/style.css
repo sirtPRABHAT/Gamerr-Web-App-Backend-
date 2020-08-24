@@ -270,20 +270,23 @@ body {
   width: 40%;
 }
 .nav__logo {
-  height: 2.5rem;
+  height: 3.5rem;
 }
 .nav__text {
   font-weight: 700;
   font-family: cursive;
   color: white;
-  display: inline;
+  display: inline-block;
+  position: relative;
+  top: -1rem;
   vertical-align: text-bottom;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  margin-left: 0.6rem;
 }
 .nav__list {
   float: right;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   margin-right: 8rem;
   margin-left: 8rem;
 }
@@ -551,10 +554,10 @@ body {
 }
 .footer__logo-box {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 .footer__logo {
-  width: 5rem;
+  width: 7rem;
   height: auto;
 }
 .footer__navigation {

@@ -21,6 +21,9 @@ Router.route('/roomId/:gameId').get(
   viewsController.getroomId
 );
 
-Router.route('/game/chat').get(viewsController.getChatBox);
+Router.route('/chat/:game_slug').get(
+  authController.isLoggedIn,
+  viewsController.getChatBox
+);
 
 module.exports = Router;

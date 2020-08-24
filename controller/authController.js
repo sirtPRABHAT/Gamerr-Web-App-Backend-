@@ -166,23 +166,28 @@ exports.isLoggedIn = async (req, res, next) => {
 
       //check if user exists or not
       if (!freshUser) {
+        req.user = 'null';
         return next();
       }
 
       //check if user changed password after token created
       //decoded.iat provide issued at time
       if (freshUser.changedPasswordAfter(decoded.iat)) {
+        req.user = 'null';
         return next();
       }
 
+      req.user = freshUser;
       res.locals.user = freshUser; // NOTE every template have access to res.locals so we put it here to use it there
 
       return next();
     } catch (err) {
+      req.user = 'null';
       return next();
     }
   }
 
+  req.user = 'null';
   next();
 };
 

@@ -29,6 +29,7 @@ exports.getGame = catchAsync(async (req, res, next) => {
     title: 'Free Fire',
     game,
     gameId,
+    user_name: req.user,
   });
 });
 
@@ -68,5 +69,15 @@ exports.getroomId = async (req, res, next) => {
 };
 
 exports.getChatBox = (req, res, next) => {
-  res.render('chat');
+  if (req.user === 'null') {
+    res.render('error', {
+      redirect: `/gameId/${req.params.game_slug}`,
+      heading: 'ERROR',
+      message: 'Please login to go to chat room',
+    });
+  } else {
+    res.redirect(
+      `/chat.html?username=${req.user.name}&room=${req.params.game_slug}`
+    );
+  }
 };
