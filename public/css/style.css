@@ -257,38 +257,78 @@ body {
   background-color: #1c252c;
   width: 100%;
   top: 0;
-  padding-bottom: 1rem;
   overflow: hidden;
   position: fixed;
   z-index: 100;
   box-shadow: 0 1rem 10rem rgba(0, 0, 0, 0.4);
 }
 .nav__logo-box {
-  position: absolute;
   margin-left: 10rem;
-  padding: 1rem;
+  float: left;
+  padding: 1.3rem 1rem;
   width: 40%;
 }
+@media (max-width: 600px) {
+  .nav__logo-box {
+    margin-left: 2rem;
+    float: left;
+    padding: 1.3rem 1rem;
+    width: 79%;
+  }
+}
+@media (max-width: 890px) {
+  .nav__logo-box {
+    margin-left: 5rem;
+  }
+}
+@media (max-width: 700px) {
+  .nav__logo-box {
+    margin-left: 3rem;
+  }
+}
 .nav__logo {
-  height: 3.5rem;
+  height: 2.5rem;
 }
 .nav__text {
   font-weight: 700;
   font-family: cursive;
   color: white;
-  display: inline-block;
-  position: relative;
-  top: -1rem;
+  display: inline;
   vertical-align: text-bottom;
-  font-size: 1.3rem;
-  margin-left: 0.6rem;
+  font-size: 1.5rem;
+  padding-left: 1rem;
 }
 .nav__list {
-  float: right;
   margin-top: 1.5rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
   margin-right: 8rem;
-  margin-left: 8rem;
+  margin-left: 10rem;
+  display: inline-block;
+}
+@media (max-width: 1380px) {
+  .nav__list {
+    margin-right: 0.5rem;
+    margin-left: 8rem;
+  }
+}
+@media (max-width: 1150px) {
+  .nav__list {
+    margin-right: 0rem;
+    margin-left: 4.5rem;
+  }
+}
+@media (max-width: 700px) {
+  .nav__list {
+    margin-left: 1.8rem;
+  }
+}
+@media (max-width: 600px) {
+  .nav__list {
+    float: none;
+    margin-top: 0.7rem;
+    display: none;
+    margin-left: 1.5rem;
+  }
 }
 .nav__list-link {
   list-style: none;
@@ -310,6 +350,26 @@ body {
   display: inline-block;
   margin-right: 2rem;
   font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+  .nav__item {
+    display: block;
+    margin-top: 0rem;
+  }
+}
+
+.icon-menu {
+  color: #83939f;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  font-size: 3.5rem;
+  display: none;
+}
+@media (max-width: 600px) {
+  .icon-menu {
+    display: block;
+    margin-right: 1rem;
+  }
 }
 
 .header {

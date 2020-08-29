@@ -2,13 +2,14 @@ div.nav.clearfix
     .nav__logo-box
         img.nav__logo(src="/img/gamepad_white.png", alt="logo")
         p.nav__text GEEK_GAMERR
-    ul.nav__list
+    ion-icon.icon.icon-menu(name="menu")
+    ul.nav__list.clearfix
         li.nav__item
             a.nav__list-link Home
         li.nav__item
-            a.nav__list-link Play
-        li.nav__item
             a.nav__list-link About Us
+        li.nav__item
+                a.nav__list-link(href="#signup-form" id="signup-btn") Signup
         if user    
             li.nav__item
                 a.nav__list-link(href="#" id="logout-btn")
@@ -17,9 +18,7 @@ div.nav.clearfix
             li.nav__item
                 a.nav__list-link(href="#login-form" id="login-btn")
                     span Login
-            li.nav__item
-                a.nav__list-link(href="#signup-form" id="signup-btn")
-                    span Signup
+            
         //- li.nav__item
         //-     a.nav__list-link(href="#")
         //-         span Sign up
