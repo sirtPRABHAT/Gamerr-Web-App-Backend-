@@ -662,7 +662,7 @@ body {
 }
 .book__form {
   padding: 2rem;
-  width: 60%;
+  width: 70%;
 }
 @media (max-width: 400px) {
   .book__form {
@@ -728,7 +728,7 @@ body {
   border: none;
   border-bottom: 3px solid transparent;
   display: block;
-  width: 90%;
+  width: 68%;
   transition: all 0.3s;
 }
 @media (max-width: 400px) {
