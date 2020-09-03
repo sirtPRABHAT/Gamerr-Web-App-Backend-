@@ -931,6 +931,12 @@ body {
   margin: 1rem 6rem;
   padding: 1rem 2rem;
 }
+@media only screen and (max-width: 400px) {
+  .detail {
+    margin: 1rem 2rem;
+    padding: 1rem 2rem;
+  }
+}
 .detail__features {
   padding: 0.2rem 2rem;
 }
@@ -945,7 +951,7 @@ body {
   padding-left: 3rem;
 }
 
-.purchase {
+/* .purchase {
   margin: 4rem 6rem;
   padding: 0.2rem 4rem;
   height: 20rem;
@@ -1050,10 +1056,119 @@ body {
   top: 44%;
   left: 28%;
   color: white;
+} */
+
+.purchase_section {
+  background-color: #222d35;
+}
+
+.purchase {
+  display: flex;
+  margin: 4rem 6rem;
+  padding: 0.2rem 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 400px) {
+  .purchase {
+    margin: 4rem 0rem;
+  }
+}
+@media only screen and (max-width: 332px) {
+  .purchase {
+    margin: 4rem 0rem;
+    padding: 0.2rem 0rem;
+  }
+}
+
+.purchase__detail {
+  margin: 2rem;
+}
+.purchase__imgbox {
+  width: 15rem;
+  height: 20rem;
+  margin: 2rem;
+  background-size: cover;
+  display: inline-block;
+}
+.purchase__imgbox-img {
+  background-size: cover;
+  height: 100%;
+}
+.purchase__btn {
+  display: inline-block;
+  margin: 0.2rem 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+}
+.purchase__btn-buy {
+  background-image: linear-gradient(to left, red, #ff7300);
+}
+.purchase__btn-roomId {
+  background-image: linear-gradient(to left, #80006b, #cc00ff);
+}
+.purchase__btn-chat {
+  background-image: linear-gradient(to left, #0059ff, #044164);
+}
+.purchase__timer {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px white solid;
+  color: white;
+}
+.purchase__timer-text {
+  font-size: 1.4rem;
+}
+.purchase__timer-time {
+  font-size: 1.6rem;
+}
+.purchase__fee {
+  display: block;
+  color: white;
+  margin: 2rem;
+}
+.purchase__fee-text {
+  color: green;
+  font-size: 1.8rem;
+}
+.purchase__fee-fee {
+  color: white;
+  font-size: 1.8rem;
+}
+.purchase__price {
+  display: block;
+  margin: 2rem;
+}
+.purchase__price-text {
+  color: yellow;
+  font-size: 1.8rem;
+}
+.purchase__price-price {
+  color: white;
+  font-size: 1.8rem;
+}
+
+.icon-cash-2 {
+  color: green;
+}
+
+.icon-trophy-2 {
+  color: yellow;
 }
 
 .players {
   margin: 1rem 8rem;
+}
+@media only screen and (max-width: 400px) {
+  .players {
+    margin: 1rem 2rem;
+  }
 }
 .players table {
   border-collapse: collapse;

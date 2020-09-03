@@ -7,38 +7,76 @@ block content
         .row
             .col.span-1-of-2
                 .title
-                    h1.title__text(style="font-weight:500;") Game Overview
+                    h1.title__text(style="font-weight:700;") Game Overview
                 .detail__features
                     p.detail__feature=`Sarting Date - ${game.startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})} 2020` 
                     p.detail__feature=`Starting Time - ${game.startDates.toLocaleString('en-us', { hour: '2-digit', minute: '2-digit', second: '2-digit'})}`
                     p.detail__feature Mode - Solo
                     p.detail__feature Country - India
                 .title
-                    h1.title__text(style="font-weight:500;") Coordinators
+                    h1.title__text(style="font-weight:700;") Coordinators
                 .detail__features
                     p.detail__feature Saurabh
                     p.detail__feature Suraj
             .col.span-1-of-2
                 .title
-                    h1.title__text(style="font-weight:500;") About Tournament
+                    h1.title__text(style="font-weight:700;") About Tournament
                 p Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet labore culpa asperiores aspernatur dolores deserunt iure, laborum mollitia dolorum nostrum. Quidem eveniet aspernatur itaque earum corrupti amet soluta tempora. Atque!
     
-    section.purchase
-        .purchase__img(style="background-image: url(/img/free_fire_port.jpg);")
-        p.purchase__timer.purchase__timer-text Tournament Start in - 
-            span.purchase__timer-time(id="timer")
-        ion-icon.icon.icon-cash-2(name="cash-sharp")
-        p.purchase__fee.purchase__fee-text 
-            span.purchase__fee-fee Entry Fee 10  &#8377;
-        ion-icon.icon.icon-trophy-2(name="trophy-sharp")
-        p.purchase__price.purchase__price-text 
-            span.purchase__price-price Price 100  &#8377;
-        .purchase__btn.purchase__btn-buy
-            a#book-game(href="#" data-id=`${game._id}`) Purchase
-        .purchase__btn.purchase__btn-roomId
-            a(href=`/roomId/${game._id}`) Get Room Id
-        .purchase__btn.purchase__btn-chat
-            a(href=`/chat/${game.slug}`) Go to chat room 2
+    //- section.purchase
+    //-     .purchase__img(style="background-image: url(/img/free_fire_port.jpg);")
+    //-     p.purchase__timer.purchase__timer-text Tournament Start in - 
+    //-         span.purchase__timer-time(id="timer")
+    //-     ion-icon.icon.icon-cash-2(name="cash-sharp")
+    //-     p.purchase__fee.purchase__fee-text 
+    //-         span.purchase__fee-fee Entry Fee 10  &#8377;
+    //-     ion-icon.icon.icon-trophy-2(name="trophy-sharp")
+    //-     p.purchase__price.purchase__price-text 
+    //-         span.purchase__price-price Price 100  &#8377;
+    //-     .purchase__btn.purchase__btn-buy
+    //-         a#book-game(href="#" data-id=`${game._id}`) Purchase
+    //-     .purchase__btn.purchase__btn-roomId
+    //-         a(href=`/roomId/${game._id}`) Get Room Id
+    //-     .purchase__btn.purchase__btn-chat
+    //-         a(href=`/chat/${game.slug}`) Go to chat room 2
+
+
+    section.purchase_section
+        section.purchase
+            div.purchase__imgbox
+                .purchase__imgbox-img.clearfix(style="background-image: url(/img/free_fire_port.jpg);")
+            div.purchase__detail.clearfix
+                p.purchase__timer.purchase__timer-text Tournament Start in -
+                    span.purchase__timer-time(id="timer")
+                div.purchase__fee.purchase__fee-text
+                    ion-icon.icon.icon-cash-2(name="cash-sharp")
+                    span.purchase__fee-fee Entry Fee 10  &#8377;
+                div.purchase__price.purchase__price-text
+                    ion-icon.icon.icon-trophy-2(name="trophy-sharp")
+                    span.purchase__price-price Price 100  &#8377;
+                a#book-game.purchase__btn.purchase__btn-buy(href="#" data-id=`${game._id}`) Join
+                a.purchase__btn.purchase__btn-roomId(href=`/roomId/${game._id}`) Room Id
+                a.purchase__btn.purchase__btn-chat(href=`/chat/${game.slug}`) chat room 
+                
+
+
+
+
+        //- <section class="purchase_section">
+        //-     <section class="purchase">
+        //-         <div class="purchase__imgbox">
+        //-             <div class="purchase__imgbox-img clearfix" style="background-image: url(./img/free_fire_port.jpg);"></div>
+        //-         </div>
+        //-         <div class="purchase__detail clearfix">
+        //-             <p class="purchase__timer purchase__timer-text">Tournament starts in - <span class="purchase__timer-time" id="timer"></span></p>
+        //-             <div class="purchase__fee purchase__fee-text"><ion-icon class="icon icon-cash-2" name="cash-sharp"></ion-icon><span class="purchase__fee-fee"> Entry Fee 10  &#8377;</span></div>
+        //-             <div class="purchase__price purchase__price-text"><ion-icon class="icon icon-trophy-2" name="trophy-sharp"></ion-icon><span class="purchase__price-price">Price 100  &#8377;</span></div>
+        //-             <a class="purchase__btn purchase__btn-buy" id="purchase" href="/purchase">Join now</a>               
+        //-             <a  class="purchase__btn purchase__btn-roomId" href="#">Room Id</a>
+        //-             <a class="purchase__btn purchase__btn-chat" href="#">Chat room</a> 
+        //-         </div>
+        //-     </section>
+        //- </section>
          
         
 
@@ -46,7 +84,7 @@ block content
 
     section.players
         .title
-            h1.title__text(style="font-weight:500;") List of players Joined
+            h1.title__text(style="font-weight:700;") List of players Joined
         div(style="overflow-x:auto;")
             table
                 tr

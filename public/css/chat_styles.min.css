@@ -6,6 +6,11 @@
 html {
   font-size: 16px;
 }
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 30px;
+  }
+}
 input {
   font-size: 14px;
 }
@@ -87,8 +92,19 @@ button:disabled {
   overflow-y: scroll;
 }
 .message {
+  font-size: 16px;
   margin-bottom: 16px;
 }
+
+@media (max-width: 400px) {
+  .message {
+    font-size: 30px;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+    padding: 10px;
+  }
+}
+
 .message__name {
   font-weight: 600;
   font-size: 14px;
@@ -97,6 +113,11 @@ button:disabled {
 .message__meta {
   color: #777;
   font-size: 14px;
+}
+@media (max-width: 400px) {
+  .message__name {
+    font-size: 40px;
+  }
 }
 .message a {
   color: #0070cc;
