@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1" />
     <title></title>
-    <link rel="stylesheet" href="/css/chat_styles.min.css" />
+    <link rel="stylesheet" href="/css/chat_styles.css" />
   </head>
   <body>
     <div class="chat">
@@ -10,10 +11,13 @@
 
       <div class="chat__main">
         <div id="messages" class="chat__messages"></div>
-
         <div class="compose">
           <form id="msg-form">
-            <input name="msg" placeholder="Type message here" />
+            <input
+              name="msg"
+              placeholder="Type message here"
+              autocomplete="OFF"
+            />
             <button>Send</button>
           </form>
           <button id="send-location">Send Location</button>
@@ -28,7 +32,7 @@
           <span class="message__name">{{username}}</span>
           <span class="message__meta">{{timestamp}} </span>
         </p>
-        <p>{{message}}</p>
+        <p class="message__text">{{message}}</p>
       </div>
     </script>
 

@@ -6,11 +6,7 @@
 html {
   font-size: 16px;
 }
-@media screen and (max-width: 400px) {
-  html {
-    font-size: 30px;
-  }
-}
+
 input {
   font-size: 14px;
 }
@@ -73,19 +69,41 @@ button:disabled {
 .chat {
   display: flex;
 }
+
+@media (max-width: 400px) {
+  .chat {
+    flex-direction: column;
+  }
+}
+
 .chat__sidebar {
   height: 100vh;
   color: #fff;
   background: #333744;
   width: 225px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
+
+@media (max-width: 400px) {
+  .chat__sidebar {
+    height: 20vh;
+    width: 100%;
+  }
+}
+
 .chat__main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   max-height: 100vh;
 }
+
+@media (max-width: 400px) {
+  .chat__main {
+    display: block;
+  }
+}
+
 .chat__messages {
   flex-grow: 1;
   padding: 24px 24px 0;
@@ -94,15 +112,6 @@ button:disabled {
 .message {
   font-size: 16px;
   margin-bottom: 16px;
-}
-
-@media (max-width: 400px) {
-  .message {
-    font-size: 30px;
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 16px;
-    padding: 10px;
-  }
 }
 
 .message__name {
@@ -114,11 +123,7 @@ button:disabled {
   color: #777;
   font-size: 14px;
 }
-@media (max-width: 400px) {
-  .message__name {
-    font-size: 40px;
-  }
-}
+
 .message a {
   color: #0070cc;
 }
@@ -128,6 +133,17 @@ button:disabled {
   margin-top: 16px;
   padding: 24px;
 }
+
+/* @media (max-width: 400px) {
+  .compose {
+    display: flex;
+    flex-shrink: 0;
+    margin-top: 16px;
+    position: fixed;
+    padding: 24px;
+  }
+} */
+
 .compose form {
   display: flex;
   flex-grow: 1;
@@ -159,4 +175,17 @@ button:disabled {
   list-style-type: none;
   font-weight: 300;
   padding: 12px 24px 0;
+}
+
+#scroller * {
+  /* don't allow the children of the scrollable element to be selected as an anchor node */
+  overflow-anchor: none;
+}
+
+#anchor {
+  /* allow the final child to be selected as an anchor node */
+  overflow-anchor: auto;
+
+  /* anchor nodes are required to have non-zero area */
+  height: 1px;
 }
