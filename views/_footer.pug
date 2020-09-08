@@ -44,22 +44,25 @@ footer.footer
         .popup__right
             h1.popup__right__heading(style="font-weight: 700;") Create new Account
             a.popup__close(href="#signUp-btn") &times;
-            form.form(action="#" id="form-login")
+            form.form(action="#" id="form-signup")
                 .form__group
-                    input.form__input(type="email" id="name" placeholder="Name" required autocomplete="OFF")
-                    label.form__label(for="email") Name
+                    input.form__input(type="text" id="signup-name" name = "name" placeholder="Name" required autocomplete="ON")
+                    label.form__label(for="name") Name
                 .form__group
-                    input.form__input(type="name" id="email" placeholder="Email Address" required autocomplete="OFF")
-                    label.form__label(for="password") Email Address
+                    input.form__input(type="email" id="signup-email" name="email" placeholder="Email Address" required autocomplete="ON")
+                    label.form__label(for="email") Email Address
                 .form__group
-                    input.form__input(type="password" id="password" placeholder="Password" required autocomplete="OFF")
+                    input.form__input(type="password" id="signup-password" name= "password" placeholder="Password" required autocomplete="ON")
+                    label.form__label(for="password") Password
+                .form__group
+                    input.form__input(type="password" id="signup-passwordConfirm" name= "passwordConfirm" placeholder="Password" required autocomplete="ON")
                     label.form__label(for="password") Password
                 .form__group.form__group-last
                     button.btn.btn--green-popup Sign Up &rarr;
-                .form__group.form__group-last
+                .form__group.form__group-last 
                     a.form__group-last__link(href="#") Already have a account
                
 
-
+ 
 
 

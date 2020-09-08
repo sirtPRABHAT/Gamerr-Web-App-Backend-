@@ -36,6 +36,7 @@ module.exports = class Email {
     //1)
 
     const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
+      email: this.to,
       firstName: this.firstName,
       subject,
       otp,

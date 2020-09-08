@@ -39,3 +39,36 @@ export const logout = async () => {
     showAlert('error', 'error loggingOut! Try again');
   }
 };
+
+export const signup = async (
+  user_name,
+  user_email,
+  user_password,
+  user_password_confirm
+) => {
+  console.log(user_name)
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: '/api/users/signupotp',
+      data: {
+        name: user_name,
+        email: user_email,
+        password: user_password,
+        passwordConfirm: user_password_confirm,
+      },
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Activation link has been sent to yor Email ');
+      // NOTE how to set timeout in js
+      // window.setTimeout(() => {
+      //   // NOTE location.assign for loading specified page
+      //   // NOTE similarly location.reload(true/false) for reloading true-reloadig from serverData, false-reloading from cache data
+      //   location.assign('/');
+      // }, 1000);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};

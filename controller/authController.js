@@ -5,7 +5,6 @@ const appError = require('../utils/appError');
 const { promisify } = require('util');
 const Email = require('../utils/email');
 const crypto = require('crypto');
-const { findOne } = require('../models/gameModel');
 
 const tokenGenerator = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -13,7 +12,7 @@ const tokenGenerator = (id) => {
   });
 };
 
-const createSendToken = (user, status, req, res) => {
+const createSendToken = (user, status, req, res, link_render = false) => {
   const token = tokenGenerator(user._id);
 
   const cookieOptions = {
@@ -32,13 +31,20 @@ const createSendToken = (user, status, req, res) => {
 
   //this is to remove password field from signup document output
   user.password = undefined;
-  res.status(status).json({
-    status: 'Success',
-    token,
-    data: {
-      user,
-    },
-  });
+  if(!link_render){
+    res.status(status).json({
+      status: 'Success',
+      token,
+      data: {
+        user,
+      },
+    });
+  }else{
+    //NOTE this if else is for reedirecting signUp link
+    //TODO in prod and dev url is different
+    res.redirect('https://geekgamerr.herokuapp.com/')
+  }
+ 
 };
 
 exports.logout = (req, res, next) => {
@@ -69,7 +75,7 @@ exports.signupOtp = catchAsync(async (req, res, next) => {
     status: 'success',
   });
 });
-
+ 
 exports.resendOtp = catchAsync(async (req, res, next) => {
   user_email = req.body.email;
   user = await User.findOne({ email: user_email });
@@ -97,6 +103,22 @@ exports.signup = catchAsync(async (req, res, next) => {
   createSendToken(user, 201, req, res);
 });
 
+exports.signupLink = catchAsync(async (req, res) => {
+  const user = await User.findOneAndUpdate(
+    { email: req.query.email, otp: req.query.otp },
+    { active: true, otp: -1 },
+    { new: true }
+  );
+  if (!user) {
+    return res.json({
+      status: 'failed',
+      message: 'Otp is incorrect',
+    });
+  }
+  createSendToken(user, 201, req, res, true);
+  console.log(req.query)
+});
+
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -104,7 +126,6 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email, active: true }).select('+password');
-  // console.log(user);
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new appError('Email or password is not correct', 400));
