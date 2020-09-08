@@ -46,7 +46,7 @@ export const signup = async (
   user_password,
   user_password_confirm
 ) => {
-  console.log(user_name)
+  console.log(user_name);
   try {
     const res = await axios({
       method: 'POST',
@@ -60,13 +60,13 @@ export const signup = async (
     });
 
     if (res.data.status === 'success') {
-      showAlert('success', 'Activation link has been sent to yor Email ');
+      // showAlert('success', 'Activation link has been sent to yor Email ');
       // NOTE how to set timeout in js
-      // window.setTimeout(() => {
-      //   // NOTE location.assign for loading specified page
-      //   // NOTE similarly location.reload(true/false) for reloading true-reloadig from serverData, false-reloading from cache data
-      //   location.assign('/');
-      // }, 1000);
+      window.setTimeout(() => {
+        // NOTE location.assign for loading specified page
+        // NOTE similarly location.reload(true/false) for reloading true-reloadig from serverData, false-reloading from cache data
+        location.assign('/#middle-msg');
+      }, 500);
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
