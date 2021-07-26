@@ -1,3 +1,3 @@
-[Visit Application HERE](https://linkedin.com/in/)
+[Visit Application HERE](https://geekgamerr.herokuapp.com/)
 
-<img align="right" alt="GIF" src="./Screenshot.png" width="408" height="318" />
+<img align="center" alt="GIF" src="./screenshot.png" width="700" height="auto" />
