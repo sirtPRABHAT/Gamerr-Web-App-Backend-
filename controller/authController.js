@@ -31,7 +31,7 @@ const createSendToken = (user, status, req, res, link_render = false) => {
 
   //this is to remove password field from signup document output
   user.password = undefined;
-  if(!link_render){
+  if (!link_render) {
     res.status(status).json({
       status: 'Success',
       token,
@@ -39,12 +39,11 @@ const createSendToken = (user, status, req, res, link_render = false) => {
         user,
       },
     });
-  }else{
+  } else {
     //NOTE this if else is for reedirecting signUp link
     //TODO in prod and dev url is different
-    res.redirect('https://geekgamerr.herokuapp.com/')
+    res.redirect('https://geekgamerr.herokuapp.com/');
   }
- 
 };
 
 exports.logout = (req, res, next) => {
@@ -69,13 +68,15 @@ exports.signupOtp = catchAsync(async (req, res, next) => {
     passwordChangedAt: req.body.passwordChangedAt,
   });
 
-  // console.log(newUser);
+  console.log(newUser);
+
   await new Email(newUser, otp).sendWelcome();
+
   res.status(200).json({
     status: 'success',
   });
 });
- 
+
 exports.resendOtp = catchAsync(async (req, res, next) => {
   user_email = req.body.email;
   user = await User.findOne({ email: user_email });
@@ -116,7 +117,7 @@ exports.signupLink = catchAsync(async (req, res) => {
     });
   }
   createSendToken(user, 201, req, res, true);
-  console.log(req.query)
+  console.log(req.query);
 });
 
 exports.login = catchAsync(async (req, res, next) => {

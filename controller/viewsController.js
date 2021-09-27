@@ -5,6 +5,7 @@ const Users = require('../models/userModel');
 
 exports.getOverview = catchAsync(async (req, res, next) => {
   const games = await Games.find();
+  console.log(games);
   res.status(200).render('overview', {
     title: 'All Games',
     games,
@@ -35,12 +36,8 @@ exports.getGame = catchAsync(async (req, res, next) => {
 
 exports.getroomId = async (req, res, next) => {
   const gameId = req.params.gameId;
-  const {
-    roomId,
-    startDates,
-    players_participated,
-    slug,
-  } = await Games.findById(gameId);
+  const { roomId, startDates, players_participated, slug } =
+    await Games.findById(gameId);
   showTime = startDates.getTime() / 1000;
   checkTime = new Date().getTime() / 1000;
 

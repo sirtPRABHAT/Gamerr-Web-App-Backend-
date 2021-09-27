@@ -12,7 +12,7 @@ block content
                 .row.cards__box-details
                     .col.span-1-of-2.cards__box-detail
                         ion-icon.icon.icon-calendar(name="calendar")
-                        span= `${games[0].startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})} 2020` 
+                        span= `${games[0].startDates.toLocaleString('en-us', {month: 'long', day: '2-digit'})} 2021` 
                     .col.span-1-of-2.cards__box-detail
                         ion-icon.icon.icon-alarm(name="alarm")
                         span= `${games[0].startDates.toLocaleString('en-us', { hour: '2-digit', minute: '2-digit', second: '2-digit'})}`
@@ -145,6 +145,18 @@ block content
             h3 10 minutes. 49 players. One goal – Survival. In this fierce survival shooting game, 49 fighters descend upon a remote island from their parachutes and the last man standing brings home the coveted ‘Booyah’. Drive vehicles, explore multiple maps, scout for armory and weapons, defend yourself with the ‘Gloo Wall’, stay in the rapidly shrinking ‘safe zone’, and do more.
             .title
                 h1.title__text Garena Free Fire Tournament types
+
+    section.how_to-outer
+        .how_to-inner 
+            .title 
+                h1.title__text Also Available On Android
+        div.row.app-inner.clearfix
+            div.col.span-1-of-2.step-box
+                img.iphone(src="/img//app-iPhone.png")
+            div.col.span-1-of-2.playstore
+                a(href="#")
+                     img.iphone(src="/img//download.png")
+
     section.section-book
         .section-book_row
             .book
